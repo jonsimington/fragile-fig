@@ -19,7 +19,7 @@ namespace chess
 std::string AI::get_name() const
 {
     // REPLACE WITH YOUR TEAM NAME!
-    return "Chess C++ Jacob Gordon";
+    return "Fragile Fig";
 }
 
 /// <summary>
@@ -160,10 +160,10 @@ bool AI::run_turn()
                     mfiles[locale]=p->file;
                     mpieces[locale]=p;
                     locale++;
-                    std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;                    
+                    std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
                 }
             }
-            
+
             good=true;
             for(const auto& piece : game->pieces){
                 if(piece->file == p->file && piece->rank == p->rank+(calc*1) && p->rank+(calc*1)<9 && p->rank+(calc*1)>0){
@@ -177,10 +177,10 @@ bool AI::run_turn()
                 locale++;
                 std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-        
+
             good = false;
             if(true){
-                for(const auto& piece : game->pieces){                        
+                for(const auto& piece : game->pieces){
                     if(piece->file == mleft && piece->rank == p->rank+(calc*1) && mleft!="" && piece->owner==player->opponent){
                         good = true;
                     }
@@ -193,7 +193,7 @@ bool AI::run_turn()
                    std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
                 }
             }
-            
+
             good=false;
             if(true){
                 for(const auto& piece : game->pieces){
@@ -210,10 +210,10 @@ bool AI::run_turn()
                 }
             }
 
-        
+
         }//end Pawn
         else if(p->type=="Knight"){
-            
+
             mleft = "";
             mright = "";
             mleft2 = "";
@@ -253,7 +253,7 @@ bool AI::run_turn()
                 mleft2="f";
                 mleft="g";
             }
-            
+
             //up 2 right 1
             good=true;
             for(const auto& piece : game->pieces){
@@ -274,7 +274,7 @@ bool AI::run_turn()
                 locale++;
                    std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-            
+
             //up 1 right 2
             good=true;
             for(const auto& piece : game->pieces){
@@ -295,7 +295,7 @@ bool AI::run_turn()
                 locale++;
                    std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-            
+
             //down 1 right 2
             good=true;
             for(const auto& piece : game->pieces){
@@ -337,7 +337,7 @@ bool AI::run_turn()
                 locale++;
                    std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-            
+
             //down 2 left 1
             good=true;
             for(const auto& piece : game->pieces){
@@ -358,7 +358,7 @@ bool AI::run_turn()
                 locale++;
                    std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-            
+
             //down 1 left 2
             good=true;
             for(const auto& piece : game->pieces){
@@ -379,7 +379,7 @@ bool AI::run_turn()
                 locale++;
                    std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-    
+
             //up 1 left 2
             good=true;
             for(const auto& piece : game->pieces){
@@ -400,7 +400,7 @@ bool AI::run_turn()
                 locale++;
                    std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-            
+
             //up 2 left 1
             good=true;
             for(const auto& piece : game->pieces){
@@ -421,7 +421,7 @@ bool AI::run_turn()
                 locale++;
                    std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-            
+
         }//end knight
         else if(p->type=="Rook"){
             //up
@@ -450,9 +450,9 @@ bool AI::run_turn()
                 if(fin2){
                     break;
                 }
-                
+
             }
- 
+
             //down
             for(int i = p->rank-1;i>=1;i--){
                 good=true;
@@ -482,7 +482,7 @@ bool AI::run_turn()
                 }
 
             }
-            
+
             //right
             std::string ffile = " ";
             char ftem = p->file[0];
@@ -517,7 +517,7 @@ bool AI::run_turn()
                 }
 
             }
-            
+
             //left
             for(char i = ftemp-1; i>96;i--){
                 bool fin = false;
@@ -566,17 +566,17 @@ bool AI::run_turn()
             bool ul1 = true;
             bool ul2 = true;
             for(int i=1;i<8;i++){
-                
+
                 for(const auto& piece : game->pieces){
-                    
-                    //ur                    
+
+                    //ur
                     ftem2=(char)(ftemp+i);
                     ffile[0]=ftem2;
                     if(piece->file == ffile && piece->rank == p->rank+i && piece->owner==player){
                         ur1=false;
                     }else if(piece->file == ffile && piece->rank == p->rank+i && piece->owner!=player){
-                        if(ur1 && ur2){    
-                            ur2=false; 
+                        if(ur1 && ur2){
+                            ur2=false;
                             ftem2=(char)(ftemp+i);
                             ffile[0]=ftem2;
                             if(p->rank+i<9 && (ffile=="a" || ffile=="b" || ffile=="c" || ffile=="d" || ffile=="e" || ffile=="f" || ffile=="g" || ffile=="h")){
@@ -588,14 +588,14 @@ bool AI::run_turn()
                             }
                         }
                     }
-                    
+
                     //dr
                     ftem2=(char)(ftemp+i);
                     ffile[0]=ftem2;
                     if(piece->file == ffile && piece->rank == p->rank-i && piece->owner==player){
                         dr1=false;
                     }else if(piece->file == ffile && piece->rank == p->rank-i && piece->owner!=player){
-                        if(dr1 && dr2){    
+                        if(dr1 && dr2){
                             dr2=false;
                             ftem2=(char)(ftemp+i);
                             ffile[0]=ftem2;
@@ -608,7 +608,7 @@ bool AI::run_turn()
                             }
                         }
                     }
-                    
+
                     //dl
                     ftem2=(char)(ftemp-i);
                     ffile[0]=ftem2;
@@ -628,7 +628,7 @@ bool AI::run_turn()
                             }
                         }
                     }
-                    
+
                     //ul
                     ftem2=(char)(ftemp-i);
                     ffile[0]=ftem2;
@@ -649,7 +649,7 @@ bool AI::run_turn()
                         }
                     }
                 }
-                
+
                 //ur
                 if(ur1 && ur2){
                     ftem2=(char)(ftemp+i);
@@ -700,9 +700,9 @@ bool AI::run_turn()
                 }
 
             }
-            
+
         }//end Bishop
-        else if(p->type=="Queen"){            
+        else if(p->type=="Queen"){
             //-----------------------Straight----------------------
             //up
             for(int i = p->rank+1;i<=8;i++){
@@ -830,7 +830,7 @@ bool AI::run_turn()
 
             }
 
-            //------------------------Diagonal----------------------        
+            //------------------------Diagonal----------------------
             //up right
             ffile = " ";
             ftem = p->file[0];
@@ -889,7 +889,7 @@ bool AI::run_turn()
                         }
                     }
 
-                
+
                     //dl
                     ftem2=(char)(ftemp-i);
                     ffile[0]=ftem2;
@@ -931,7 +931,7 @@ bool AI::run_turn()
                     }
                 }
 
-                                
+
                 //ur
                 if(ur1 && ur2){
                     ftem2=(char)(ftemp+i);
@@ -985,7 +985,7 @@ bool AI::run_turn()
 
         }//end Queen
         else if(p->type == "King"){
-            
+
             bool u=true;
             bool ur=true;
             bool r=true;
@@ -994,10 +994,10 @@ bool AI::run_turn()
             bool dl=true;
             bool l=true;
             bool ul=true;
-            
+
             std::string kcast = "g";
             std::string qcast = "c";
-            
+
             mleft = "";
             mright = "";
             if(p->file=="a"){
@@ -1023,7 +1023,7 @@ bool AI::run_turn()
             }else if(p->file=="h"){
                 mleft="g";
             }
-            
+
             for(const auto& piece : game->pieces){
                 if(piece->file == p->file && piece->rank == p->rank+1 && piece->owner->color==player->color){
                     u=false;
@@ -1050,7 +1050,7 @@ bool AI::run_turn()
                     ul=false;
                 }
             }
-            
+
             if(u && p->rank+1<9){
                 mranks[locale]=p->rank+1;
                 mfiles[locale]=p->file;
@@ -1107,7 +1107,7 @@ bool AI::run_turn()
                 locale++;
                 std::cout<<p->type<<" "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-            
+
             char chold;
             int j = 0;
             int k = 0;
@@ -1118,7 +1118,7 @@ bool AI::run_turn()
                 }
                 j++;
             }
-            
+
             if(player->color=="White" && chold=='K'){
                 mranks[locale]=p->rank;
                 mfiles[locale]=kcast;
@@ -1126,7 +1126,7 @@ bool AI::run_turn()
                 locale++;
                 std::cout<<p->type<<" Castle "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-            
+
             if(player->color=="White" && chold=='Q'){
                 mranks[locale]=p->rank;
                 mfiles[locale]=qcast;
@@ -1134,7 +1134,7 @@ bool AI::run_turn()
                 locale++;
                 std::cout<<p->type<<" Castle "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-            
+
             if(player->color=="Black" && chold=='k'){
                 mranks[locale]=p->rank;
                 mfiles[locale]=kcast;
@@ -1142,7 +1142,7 @@ bool AI::run_turn()
                 locale++;
                 std::cout<<p->type<<" Castle "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-            
+
             if(player->color=="Black" && chold=='q'){
                 mranks[locale]=p->rank;
                 mfiles[locale]=qcast;
@@ -1150,9 +1150,9 @@ bool AI::run_turn()
                 locale++;
                 std::cout<<p->type<<" Castle "<<p->file<<p->rank<<" to "<<mfiles[locale-1]<<mranks[locale-1]<<std::endl;
             }
-            
+
         }//end King
-        
+
     }//end all
 
     int mmove = (rand() % locale);
@@ -1164,8 +1164,8 @@ bool AI::run_turn()
     if(player->in_check){
         return false;
     }
-    return true; 
-    
+    return true;
+
 }
 
 /// <summary>
